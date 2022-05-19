@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const bcrypt = require('bcryptjs');
+const { Number } = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -34,8 +35,22 @@ const userSchema = new mongoose.Schema({
     }
   },
   followers: [{
-    type: ObjectId, ref: 'User'
+    type: ObjectId, 
+    ref: 'User',
   }],
+  following: [{
+    type: ObjectId, 
+    ref: 'User',
+  }],
+
+  numFollowers : {
+    type : Number,
+    default : 0
+  },
+  numFollowings : {
+    type : Number,
+    default : 0
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,

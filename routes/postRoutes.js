@@ -4,7 +4,7 @@ const authController = require('../controller/authController');
 
 const router = express.Router();
 
-
+router.get('/:id', postController.getPost);
 router.post('/', authController.protect, postController.createNewPost);
 router.delete('/:id', authController.protect, postController.deletePost);
 

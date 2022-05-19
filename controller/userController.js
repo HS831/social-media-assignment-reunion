@@ -2,8 +2,6 @@ const User = require('../models/Users');
 
 exports.getUser = (req, res) => {
     User.findById(req.user._id)
-      .populate('following', '_id name')
-      .populate('followers', '_id name')
       .then(doc => res.status(200).json({
           status : 'success',
           data : {
@@ -14,7 +12,7 @@ exports.getUser = (req, res) => {
 };
 
   exports.follow = (req, res) => {
-    User.findByIdAndUpdate(req.params.id, {$push: {followers: req.user._id}}, {new: true})
+    User.findByIdAndUpdate(req.params.id, {$push: {followers: req.user._id}, $inc : {'numFollowers' : 1}}, {new: true})
       .populate('following', '_id name')
       .populate('followers', '_id name')
       .then(result => res.status(200).json({
@@ -28,7 +26,7 @@ exports.getUser = (req, res) => {
 
 
   exports.unfollow = (req, res) => {
-    User.findByIdAndUpdate(req.params.id, {$pull: {followers: req.user._id}}, {new: true})
+    User.findByIdAndUpdate(req.params.id, {$pull: {followers: req.user._id}, $inc: {'numFollowers' : -1}}, {new: true})
       .populate('following', '_id name')
       .populate('followers', '_id name')
       .then(result => res.status(200).json(result))

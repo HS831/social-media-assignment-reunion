@@ -1,5 +1,19 @@
 const Post = require('../models/Posts');
 
+exports.getPost = (req, res) => {
+    Post.findById(req.params.id)
+    .then(doc => res.status(200).json({
+        status : 'success',
+        data : {
+            data : doc
+        }
+    }))
+    .catch(err => res.status(400).json({
+        status : 'fail',
+        data : 'Invalid request',
+    }))
+}
+
 // API for creating a post.
 
 exports.createNewPost = (req, res, next) => {
@@ -40,7 +54,7 @@ exports.deletePost = (req, res) => {
 // Controller function for Liking the post..
 
 exports.likePost = (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, {$push: {likes: req.user._id}}, {new: true})
+    Post.findByIdAndUpdate(req.params.id, {$push: {likes: req.user._id}, $inc : {'numLikes' : 1}}, {new: true})
       .populate('user', '_id name')
       .then(doc => res.status(200).json({
           status: 'success',
@@ -57,7 +71,7 @@ exports.likePost = (req, res) => {
  // Controller function for unliking the post..
 
   exports.unlikePost = (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, {$pull: {likes: req.user._id}}, {new: true})
+    Post.findByIdAndUpdate(req.params.id, {$pull: {likes: req.user._id}, $inc : {'numLikes' : -1}}, {new: true})
       .populate('user', '_id name')
       .then(doc => res.status(200).json({
           status: 'success',
@@ -73,7 +87,7 @@ exports.likePost = (req, res) => {
 
 
 exports.addcomment = (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, {$push: {comments: {comment : req.body.comment, commenter : req.user._id}}}, {new: true})
+    Post.findByIdAndUpdate(req.params.id, {$push: {comments: {comment : req.body.comment, commenter : req.user._id}}, $inc : {'numComments' : 1}}, {new: true})
       .populate('user', '_id name')
       .then(doc => res.status(200).json({
           status: 'success',

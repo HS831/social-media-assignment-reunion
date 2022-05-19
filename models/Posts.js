@@ -27,7 +27,15 @@ const postSchema = new mongoose.Schema({
     comment: String,
     createdAt: {type: Date, default: Date.now()},
     commenter: {type: ObjectId, ref: 'User'}
-  }]
+  }],
+  numLikes : {
+    type : Number,
+    default : 0
+  },
+  numComments : {
+    type : Number,
+    default : 0
+  }
 }, {timestamps: true});
 
 
