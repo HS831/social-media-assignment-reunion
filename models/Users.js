@@ -33,9 +33,6 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same!'
     }
   },
-  following: [{
-    type: ObjectId, ref: 'User'
-  }],
   followers: [{
     type: ObjectId, ref: 'User'
   }],

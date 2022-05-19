@@ -40,7 +40,7 @@ exports.deletePost = (req, res) => {
 // Controller function for Liking the post..
 
 exports.likePost = (req, res) => {
-    Post.findByIdAndUpdate(req.body.postId, {$push: {likes: req.user._id}}, {new: true})
+    Post.findByIdAndUpdate(req.params.id, {$push: {likes: req.user._id}}, {new: true})
       .populate('user', '_id name')
       .then(doc => res.status(200).json({
           status: 'success',
@@ -52,12 +52,12 @@ exports.likePost = (req, res) => {
               data : err
           }
       }));
-  };
+};
   
  // Controller function for unliking the post..
 
   exports.unlikePost = (req, res) => {
-    Post.findByIdAndUpdate(req.body.postId, {$pull: {likes: req.user._id}}, {new: true})
+    Post.findByIdAndUpdate(req.params.id, {$pull: {likes: req.user._id}}, {new: true})
       .populate('user', '_id name')
       .then(doc => res.status(200).json({
           status: 'success',
@@ -69,6 +69,24 @@ exports.likePost = (req, res) => {
               data: err
           }
       }));
-  };
+};
+
+
+exports.addcomment = (req, res) => {
+    Post.findByIdAndUpdate(req.params.id, {$push: {comments: {comment : req.body.comment, commenter : req.user._id}}}, {new: true})
+      .populate('user', '_id name')
+      .then(doc => res.status(200).json({
+          status: 'success',
+          data: {
+              data : doc
+          }
+      }))
+      .catch(err => res.status(400).json({
+          status: 'fail',
+          data: {
+              data: err
+          }
+      }));
+};
 
 

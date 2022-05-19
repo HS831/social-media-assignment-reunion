@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
   }],
   comments: [{
     comment: String,
-    createdAt: {type: Date, default: Date.now},
+    createdAt: {type: Date, default: Date.now()},
     commenter: {type: ObjectId, ref: 'User'}
   }]
 }, {timestamps: true});

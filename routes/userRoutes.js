@@ -8,5 +8,7 @@ router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 
 router.get('/',authController.protect,userController.getUser);
+router.patch('/follow/:id', authController.protect, userController.follow);
+router.patch('/unfollow/:id', authController.protect, userController.unfollow);
 
 module.exports = router;
