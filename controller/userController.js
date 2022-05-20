@@ -13,6 +13,12 @@ exports.getUser = (req, res) => {
       .catch(err => res.status(404).json(err));
 };
 
+exports.addFollowing = (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, {$push: {following: req.params.id}, $inc : {'numFollowings' : 1}}, {new: true})
+    .then(result => next())
+    .catch(err => res.status(400).json(err));
+};
+
   exports.follow = (req, res, next) => {
     if(req.params.id == req.user._id){
       res.status(400).json({
@@ -32,6 +38,12 @@ exports.getUser = (req, res) => {
           }
       }))
       .catch(err => res.status(400).json(err));
+};
+
+exports.removeFollowing = (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, {$pull: {following: req.params.id}, $inc : {'numFollowings' : -1}}, {new: true})
+    .then(result => next())
+    .catch(err => res.status(400).json(err));
 };
 
 
