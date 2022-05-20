@@ -34,7 +34,6 @@ app.use('/api/users', userRoutes);
 
 
 
-
 const port = 3000;
 
 app.listen(port, () => {
