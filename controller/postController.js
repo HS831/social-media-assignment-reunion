@@ -64,7 +64,7 @@ exports.createNewPost = (req, res, next) => {
 // API to DELETE Post
 
 exports.deletePost = (req, res) => {
-    const deletePost = Post.findOneAndDelete({_id: req.params.id});
+    const deletePost = Post.findOneAndDelete({_id: req.params.id, user: req.user._id});
     
     deletePost
       .then(doc => res.status(200).json({
