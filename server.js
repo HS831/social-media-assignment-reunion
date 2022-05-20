@@ -1,3 +1,4 @@
+const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const express = require('express');
@@ -8,6 +9,7 @@ const expressValidator = require('express-validator');
 
 const postRoutes = require('./routes/postRoutes');
 const userRoutes = require('./routes/userRoutes');
+const postOnUser = require('./routes/postOnUser');
 
 dotenv.config({path : './config.env'});
 
@@ -21,8 +23,11 @@ mongoose.connect(process.env.DATABASE_USER, {
 .then(() => console.log('Connected to DB...'))
 .catch(err => console.log(`DB Error: ${err.message}`));
 
-app.use(express.json());
 
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
+app.use(expressValidator());
 // app.use((req, res, next) => {
 //   req.requestTime = new Date().toISOString();
 //    console.log(req.headers);
@@ -30,7 +35,9 @@ app.use(express.json());
 // });
 
 app.use('/api/posts', postRoutes);
+app.use('/api/allposts', postOnUser);
 app.use('/api/users', userRoutes);
+
 
 
 
