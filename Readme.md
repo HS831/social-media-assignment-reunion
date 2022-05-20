@@ -43,8 +43,5 @@ npm run dev : For development enviorments
 ```
 The local server will start at 127.0.0.1:3000/
 
-## License
-
-MIT
 
 
