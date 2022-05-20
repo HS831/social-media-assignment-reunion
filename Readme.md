@@ -34,17 +34,22 @@ SocialFLix uses a number of Libraries to work properly:
 
 SocialFLix requires [Node.js](https://nodejs.org/) v10+ to run.
 
-Install the dependencies and devDependencies and start the server.
+### Steps to run this project : 
 
 ```sh
+Step 1 : Clone this Repo 
+Step 2 : Open your bash shell and run code git clone {git clone url}
+Step 3 : Install the dependencies and devDependencies and start the server.
+
+Step 4 : 
+
 cd socialflix
 npm i
 npm run dev : For development enviorments
 ```
 The local server will start at 127.0.0.1:3000/
 
-## License
-
-MIT
+### This Project is also deployed on heroku
+Heroku Link : https://socialflixapi.herokuapp.com/
 
 

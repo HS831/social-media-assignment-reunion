@@ -2,7 +2,7 @@ const Post = require('../models/Posts');
 
 exports.getAllPostByUser = (req, res) => {
     Post.find({user: req.user._id})
-    .sort({updatedAt: -1})
+    .sort({createdAt: -1})
     .then(doc => res.status(200).json({
         status : 'success',
         data : {
@@ -42,7 +42,6 @@ exports.getPost = (req, res) => {
 // API for creating a post.
 
 exports.createNewPost = (req, res, next) => {
-    console.log('hello2');
       const post = new Post(req.body);
       post.user = req.user;
       post.save()
