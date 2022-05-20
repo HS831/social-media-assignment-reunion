@@ -49,7 +49,10 @@ npm run dev : For development enviorments
 ```
 The local server will start at 127.0.0.1:3000/
 
+<<<<<<< HEAD
 ### This Project is also deployed on heroku
 Heroku Link : https://socialflixapi.herokuapp.com/
+=======
+>>>>>>> f80182b04f863005536d6f01ce7636a5b3627614
 
 
