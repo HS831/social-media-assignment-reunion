@@ -27,8 +27,8 @@ SocialFLix uses a number of Libraries to work properly:
 - Express.js
 - mongoose
 - For Database : MongoDB
-- For authentication : jwt-authentication
-- And many more ( have a look at package.json file)
+- For authentication : jsonwebtoken
+- And many more..
 
 ## Installation
 
