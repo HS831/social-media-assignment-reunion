@@ -1,9 +1,9 @@
 # SocialFlix
-## Your one stop to all APIs needed for social media website.
+## The APIs you need for any kind of social media websites.
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-SocialFlix is a backend ready API project built with Node.js, Express.js which supports all the required APIs for a social media website.
+SocialFlix is a backend ready API project built with Node.js, Express.js which supports all the required APIs that is nedded for a social media website.
 
 ## APIs List : 
 
