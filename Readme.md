@@ -1,8 +1,6 @@
 # SocialFlix
 ## The APIs you need for any kind of social media websites.
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 SocialFlix is a backend ready API project built with Node.js, Express.js which supports all the required APIs that is nedded for a social media website.
 
 ## APIs List : 
@@ -49,7 +47,5 @@ npm run dev : For development enviorments
 ```
 The local server will start at 127.0.0.1:3000/
 
-### This Project is also deployed on heroku
-### Heroku Link : https://socialflixapi.herokuapp.com/
 
 
